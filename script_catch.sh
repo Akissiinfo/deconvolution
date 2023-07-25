@@ -1,6 +1,6 @@
 #!/bin/bash
-$x_paramètre = $1
-for i in $paramètre
+
+for i in $1
 do
     grep -f $i -A 3 $2
     

@@ -69,8 +69,8 @@ def main():
 
     index0_forward_reverse = pd.merge(index0forward_data, reverse_dataset, on ="seqID")
     index0_forward_reverse_L = pd.merge(index0forward_data, all_seq_data, on ="seqID")
-    index0_forward_reverse_L.to_csv('index0_forward_reverse_L.csv', sep='\t')
-    d_new = index0_forward_reverse_L.drop(index0_forward_reverse_L[(index0_forward_reverse_L['patternName_y'] == '16S_341F')&(index0_forward_reverse_L ['patternName']=='18S_1626r')].index)
+    #index0_forward_reverse_L.to_csv('index0_forward_reverse_L.csv', sep='\t')
+    d_new = index0_forward_reverse.drop(index0_forward_reverse[(index0_forward_reverse['patternName_y'] == '16S_341F')&(index0_forward_reverse ['patternName']=='18S_1626r')].index)
 
     data_filter_2 = d_new.drop(d_new[(d_new['patternName_y'] == '18S_391f')&(d_new['patternName']=='16S_1391R')].index) 
     #all_data_filter_2
@@ -82,13 +82,13 @@ def main():
     #all_data_filter_5 
     data_filter_6 = data_filter_5.drop(data_filter_5[(data_filter_5['patternName_y'] == 'ITS_u1')&(data_filter_5['patternName']=='18S_1626r')].index)
     #all_data_filter_6
-    data_filter_7 = data_filter_6.drop(data_filter_6[(data_filter_6['patternName_y'] == 'ITS_u1')&(data_filter_6['patternName']=='ITS_u4')&(data_filter_6['read_length']>900)].index)
+   # data_filter_7 = data_filter_6.drop(data_filter_6[(data_filter_6['patternName_y'] == 'ITS_u1')&(data_filter_6['patternName']=='ITS_u4')&(data_filter_6['read_length']>900)].index)
     #all_data_filter_7                                                                                                               
-    data_filter_8 = data_filter_7.drop(data_filter_7[(data_filter_7['patternName_y'] == '16S_341F')&(data_filter_7['patternName']=='16S_1391R')&(data_filter_7['read_length']<1000)].index)
+    #data_filter_8 = data_filter_7.drop(data_filter_7[(data_filter_7['patternName_y'] == '16S_341F')&(data_filter_7['patternName']=='16S_1391R')&(data_filter_7['read_length']<1000)].index)
     #all_data_filter_8
-    data_filter_index0 = data_filter_8.drop(data_filter_8[(data_filter_8['patternName_y'] == '18S_391f')&(data_filter_8['patternName']=='18S_1626r')&(data_filter_8['read_length']<1000)].index)  
+    #data_filter_index0 = data_filter_8.drop(data_filter_8[(data_filter_8['patternName_y'] == '18S_391f')&(data_filter_8['patternName']=='18S_1626r')&(data_filter_8['read_length']<1000)].index)  
 
-    for group, dataframe in  data_filter_index0.groupby('patternName_x'):
+    for group, dataframe in  data_filter_6.groupby('patternName_y'):
         
         # save the dataframe for each group to a csv
         dataframe.to_csv(f'{group}.csv', index=False)
