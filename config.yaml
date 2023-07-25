@@ -1,2 +1,7 @@
-   index: index_barcode.txt
-     
+   index: index_barcode18.txt
+   
+   forward: barcode_forward.txt
+   
+   reverse: barcode_reverse.txt
+
+   data : data_1/*.fastq
